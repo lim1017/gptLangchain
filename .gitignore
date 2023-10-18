@@ -1,0 +1,44 @@
+# Python-specific
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.pyc
+
+# Virtual environment
+venv/
+env/
+.env
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# IDE or Editor files
+.vscode/
+.idea/
+
+# Compiled files
+*.pyc
+*.pyo
+*.pyd
+
+# Logs
+*.log
+
+# User-specific files
+.DS_Store
+*.suo
+*.user
+*.sln
+*.swp
+*.sublime-workspace
+*.project
+
+# Environment-specific files
+.env
+
+# Ignore pipenv or poetry lock files if you're using a specific dependency management tool
+Pipfile
+Pipfile.lock
+pyproject.toml
