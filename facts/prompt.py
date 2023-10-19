@@ -23,4 +23,10 @@ chain = RetrievalQA.from_chain_type(
     retriever=retriever
 )
 
-result = chain.run("What is an intresting fact about the english language")
+user_input = input("Query the facts: ")
+
+print('searching...')
+result = chain.run(user_input)
+
+
+print(result)
