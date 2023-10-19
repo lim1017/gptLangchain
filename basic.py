@@ -4,7 +4,7 @@ from langchain.chains import LLMChain, SequentialChain
 
 import argparse
 from dotenv import load_dotenv
-import os
+# import os
 
 load_dotenv()  # Load variables from .env into os.environ
 
@@ -13,12 +13,8 @@ parser.add_argument('--task', type=str, default='return a list of numbers')
 parser.add_argument('--language', type=str, default='python')
 args = parser.parse_args()
 
-openAI_key = os.environ.get('openAI_key')
 
-
-llm = OpenAI(openai_api_key=openAI_key)
-
-print('hello')
+llm = OpenAI()
 
 code_prompt = PromptTemplate(
     template='Write a short {language} function that will perform {task}',
