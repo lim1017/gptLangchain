@@ -17,16 +17,17 @@ text_splitter = CharacterTextSplitter(
 loader = TextLoader("./facts.txt")
 docs = loader.load_and_split(text_splitter)
 
+# loads the doc as embeddings into the chroma db
 db = Chroma.from_documents(
     docs,
     embedding=embeddings,
     persist_directory="emb"
 )
 
-results = db.similarity_search_with_score(
-    'What is an intresting fact about the english language')
+# results = db.similarity_search_with_score(
+#     'What is an intresting fact about the english language')
 
-for result in results:
-    print('\n')
-    print(result[1])
-    print(result[0].page_content)
+# for result in results:
+#     print('\n')
+#     print(result[1])
+#     print(result[0].page_content)
