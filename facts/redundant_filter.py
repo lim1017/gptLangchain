@@ -1,19 +1,22 @@
-from langchain.embeddings.bases import Embeddings
+from langchain.embeddings.base import Embeddings
 from langchain.vectorstores import Chroma
-from langchain.schema import BaseRetriver
+from langchain.schema import BaseRetriever
 
 
-class RedundantFilterRetriever(BaseRetriver):
+class RedundantFilterRetriever(BaseRetriever):
     embeddings: Embeddings
     chroma: Chroma
 
     def get_relevant_documents(self, query):
-        # calculate Embeddings for query string
+        # calculate embeddings for the 'query' string
         emb = self.embeddings.embed_query(query)
-        # take Embeddings and feed into max_marginal_relevance_serach_by_vector
-        self.chroma.max_marginal_relevance_search_by_vector(
-            embedding=emb, lambda_mult=0.8)
-        return []
+
+        # take embeddings and feed them into that
+        # max_marginal_relevance_search_by_vector
+        return self.chroma.max_marginal_relevance_search_by_vector(
+            embedding=emb,
+            lambda_mult=0.8
+        )
 
     async def aget_relevant_documents(self):
         return []
