@@ -21,6 +21,11 @@ retriever = RedundantFilterRetriever(
     chroma=db
 )
 
+
+# does not remove dupes
+# retriever = db.as_retriever()
+
+
 chain = RetrievalQA.from_chain_type(
     llm=chat,
     retriever=retriever,
