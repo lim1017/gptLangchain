@@ -10,6 +10,8 @@ from dotenv import load_dotenv
 
 from tools.sql import run_query_tool, list_tables, describe_tables_tool
 
+from tools.report import write_report_tool
+
 
 load_dotenv()
 
@@ -29,7 +31,7 @@ prompt = ChatPromptTemplate(
     ]
 )
 
-tools = [run_query_tool, describe_tables_tool]
+tools = [run_query_tool, describe_tables_tool, write_report_tool]
 
 agent = OpenAIFunctionsAgent(
     llm=chat,
@@ -43,6 +45,9 @@ agent_executor = AgentExecutor(
     tools=tools
 )
 
+# agent_executor(
+#     "can you list the top 5 products by order volume, and include amount sold of each product?")
+# agent_executor(
+#     "Summarize the top 5 most popular products, include amount sold and price of each product, and write the results to a file")
 agent_executor(
-    "can you list the top 5 products by order volume, and include amount sold of each product?")
-# agent_executor("how many users are there?")
+    "Summarize the top 5 most popular products. Write the results to a report file.")
